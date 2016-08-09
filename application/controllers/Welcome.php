@@ -40,11 +40,7 @@ class Welcome extends CI_Controller {
 		// 加载类
         $this->load->library('easywechat');
 
-        // 实例化
-        $app = new Application($options);
+        echo $this->easywechat->server($options);
 
-        $response = $app->server->serve();
-        // 将响应输出
-        $response->send();
 	}
 }
