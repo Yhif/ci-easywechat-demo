@@ -30,7 +30,7 @@ class Welcome extends CI_Controller {
 		    'app_id' => 'wx12ffc15640d65980',
 		    'secret' => 'bb863fb05ab69b9622e534697d120d78',
 		    'token'  => 'partybool_wechat',
-		    'aes_key' => null, // 可选
+		    'aes_key' => 'u4ZdS06uF5ELEvvzpFshXxqM9PBzhABtxjlyoOW4HMv', // 可选
 		    'log' => [
 		        'level' => 'debug',
 		        'file'  => '/tmp/easywechat.log', // XXX: 绝对路径！！！！
