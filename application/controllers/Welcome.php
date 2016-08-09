@@ -40,7 +40,7 @@ class Welcome extends CI_Controller {
 		// 加载类
         $this->load->library('easywechat');
 
-        echo $this->easywechat->server($options);
+        $this->easywechat->server($options);
 
 	}
 }
