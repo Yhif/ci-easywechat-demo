@@ -22,4 +22,29 @@ class Welcome extends CI_Controller {
 	{
 		$this->load->view('welcome_message');
 	}
+
+	public function server()
+	{
+		$options = [
+		    'debug'  => true,
+		    'app_id' => 'wx12ffc15640d65980',
+		    'secret' => 'bb863fb05ab69b9622e534697d120d78',
+		    'token'  => 'partybool_wechat',
+		    'aes_key' => null, // 可选
+		    'log' => [
+		        'level' => 'debug',
+		        'file'  => '/tmp/easywechat.log', // XXX: 绝对路径！！！！
+		    ]
+		];
+
+		// 加载类
+        $this->load->library('easywechat');
+
+        // 实例化
+        $app = new Application($options);
+
+        $response = $app->server->serve();
+        // 将响应输出
+        $response->send();
+	}
 }
