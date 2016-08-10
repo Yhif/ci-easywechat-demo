@@ -1,5 +1,8 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
+
+require_once BASEPATH.'../vendor/autoload.php';
+
+use EasyWeChat\Foundation\Application;
 
 class Welcome extends CI_Controller {
 
@@ -38,9 +41,21 @@ class Welcome extends CI_Controller {
 		];
 
 		// 加载类
-        $this->load->library('easywechat');
+        // $this->load->library('easywechat');
 
-        $this->easywechat->server($options);
+        // $this->easywechat->server($options);
 
+		$app = new Application($options);
+
+		$server = $app->server;
+
+		// $server->setMessageHandler(function ($message) {
+		//     // $message->FromUserName // 用户的 openid
+		//     // $message->MsgType // 消息类型：event, text....
+		//     return "您好！欢迎关注我!";
+		// });
+
+		$response = $server->serve();
+		$response->send(); // Laravel 里请使用：return $response;
 	}
 }

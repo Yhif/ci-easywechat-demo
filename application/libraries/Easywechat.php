@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed');
 
-require BASEPATH.'../vendor/autoload.php';
+require_once BASEPATH.'../vendor/autoload.php';
 
 use EasyWeChat\Foundation\Application;
 
