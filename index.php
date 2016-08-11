@@ -131,7 +131,11 @@ switch (ENVIRONMENT)
  */
 	$view_folder = '';
 
+/**
+ * COMPOSER DIRECTORY NAME
+ */
 
+	$composer_path = 'vendor';
 /*
  * --------------------------------------------------------------------
  * DEFAULT CONTROLLER
@@ -218,6 +222,12 @@ switch (ENVIRONMENT)
 		exit(3); // EXIT_CONFIG
 	}
 
+	if (($_composer_temp = realpath($composer_path)) !== FALSE)
+	{
+		$composer_path = $_composer_temp.DIRECTORY_SEPARATOR;
+		
+	}
+
 /*
  * -------------------------------------------------------------------
  *  Now that we know the path, set the main path constants
@@ -234,6 +244,8 @@ switch (ENVIRONMENT)
 
 	// Name of the "system" directory
 	define('SYSDIR', basename(BASEPATH));
+	// Path to the composer directory
+	define('COMPOSERPATH', $composer_path);
 
 	// The path to the "application" directory
 	if (is_dir($application_folder))
