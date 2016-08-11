@@ -1,7 +1,5 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-require_once BASEPATH.'../vendor/autoload.php';
-
 use EasyWeChat\Foundation\Application;
 
 class Welcome extends CI_Controller {
@@ -39,11 +37,6 @@ class Welcome extends CI_Controller {
 		        'file'  => '/tmp/easywechat.log', // XXX: 绝对路径！！！！
 		    ]
 		];
-
-		// 加载类
-        // $this->load->library('easywechat');
-
-        // $this->easywechat->server($options);
 
 		$app = new Application($options);
 
