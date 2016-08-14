@@ -71,7 +71,7 @@ class Welcome extends CI_Controller {
 		    // 	default:
 		    // 		$msg = '消息已收到，谢谢反馈。';
 		    // 		break;
-		    }
+		    // }
 
 		    return $message->MsgType;
 		});
