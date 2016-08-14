@@ -94,3 +94,14 @@ $db['default'] = array(
 	'failover' => array(),
 	'save_queries' => TRUE
 );
+
+$db['eloquent'] = [
+  	'driver'    => 'mysql',
+  	'host'      => 'localhost',
+  	'database'  => 'ewc',
+  	'username'  => 'root',
+  	'password'  => 'macbook-pro',
+  	'charset'   => 'utf8',
+  	'collation' => 'utf8_general_ci',
+  	'prefix'    => ''
+];

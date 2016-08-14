@@ -1,5 +1,11 @@
 {
     "require": {
-        "overtrue/wechat": "~3.1"
+        "overtrue/wechat": "~3.1",
+        "illuminate/database": "^5.2"
+    },
+    "autoload": {
+    	"classmap": [
+    		"application/models"
+    	]
     }
 }

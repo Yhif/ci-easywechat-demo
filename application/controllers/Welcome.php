@@ -45,10 +45,48 @@ class Welcome extends CI_Controller {
 		$server->setMessageHandler(function ($message) {
 		    // $message->FromUserName // 用户的 openid
 		    // $message->MsgType // 消息类型：event, text....
-		    return "您好！欢迎关注我!";
+		    switch ($message->MsgType) {
+		    	case 'event':
+		    		if ($message->Event == 'subscribe')
+		    			$msg = '终于等到你，还好我没放弃。';
+		    		break;
+		    	case 'text':
+		    		$msg = '谢谢你的直白。';
+		    		break;
+		    	case 'image':
+		    		$msg = '谢谢爆照哦。';
+		    		break;
+		    	case 'voice':
+		    		$msg = '中国好声音，点赞。';
+		    		break;
+		    	case 'video':
+		    		$msg = '视频已收到。';
+		    		break;
+		    	case 'location':
+		    		$msg = '我已经知道你在哪，马上去找你哦。';
+		    		break;
+		    	case 'link':
+		    		$msg = '链接已收到。';
+		    		break;
+		    	default:
+		    		$msg = '消息已收到，谢谢反馈。';
+		    		break;
+		    }
+
+		    return $msg;
 		});
 
 		$response = $server->serve();
 		$response->send(); // Laravel 里请使用：return $response;
+	}
+
+	public function article()
+	{
+
+		$data['articles'] = Article::where('id', '>', 0)->get();
+
+		// $data['article'] = Article::first();
+
+		$this->load->view('articles', $data);
 	}
 }
