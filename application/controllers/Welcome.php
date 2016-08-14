@@ -60,6 +60,9 @@ class Welcome extends CI_Controller {
 		    		$msg = '中国好声音。';
 		    		break;
 		    	case 'video':
+		    		$msg = '大视频已收到。';
+		    		break;
+		    	case 'shortvideo':
 		    		$msg = '小丫小呀小视频。';
 		    		break;
 		    	case 'location':
