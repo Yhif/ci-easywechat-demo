@@ -4,6 +4,25 @@ use EasyWeChat\Foundation\Application;
 
 class Welcome extends CI_Controller {
 
+	private static $options = [
+	    'debug'  => true,
+	    'app_id' => 'wx12ffc15640d65980',
+	    'secret' => 'bb863fb05ab69b9622e534697d120d78',
+	    'token'  => 'partybool_wechat',
+	    'aes_key' => 'u4ZdS06uF5ELEvvzpFshXxqM9PBzhABtxjlyoOW4HMv', // 可选
+	    'log' => [
+	        'level' => 'debug',
+	        'file'  => '/tmp/easywechat.log', // XXX: 绝对路径！！！！
+	    ]
+	];
+
+	private static $app;
+
+	public function __construct()
+	{
+		parent::__construct();
+		self::$app = new Application(self::$options);
+	}
 	/**
 	 * Index Page for this controller.
 	 *
@@ -26,53 +45,8 @@ class Welcome extends CI_Controller {
 
 	public function server()
 	{
-		$options = [
-		    'debug'  => true,
-		    'app_id' => 'wx12ffc15640d65980',
-		    'secret' => 'bb863fb05ab69b9622e534697d120d78',
-		    'token'  => 'partybool_wechat',
-		    'aes_key' => 'u4ZdS06uF5ELEvvzpFshXxqM9PBzhABtxjlyoOW4HMv', // 可选
-		    'log' => [
-		        'level' => 'debug',
-		        'file'  => '/tmp/easywechat.log', // XXX: 绝对路径！！！！
-		    ]
-		];
-
-		$app = new Application($options);
-
-		$menu = $app->menu;
-
-		$buttons = [
-		    [
-		        "type" => "click",
-		        "name" => "今日歌曲",
-		        "key"  => "V1001_TODAY_MUSIC"
-		    ],
-		    [
-		        "name"       => "菜单",
-		        "sub_button" => [
-		            [
-		                "type" => "view",
-		                "name" => "搜索",
-		                "url"  => "http://www.soso.com/"
-		            ],
-		            [
-		                "type" => "view",
-		                "name" => "视频",
-		                "url"  => "http://v.qq.com/"
-		            ],
-		            [
-		                "type" => "click",
-		                "name" => "赞一下我们",
-		                "key" => "V1001_GOOD"
-		            ],
-		        ],
-		    ],
-		];
-
-		$menu->add($buttons);
-
-		$server = $app->server;
+		
+		$server = self::$app->server;
 
 		$server->setMessageHandler(function ($message) {
 		    // $message->FromUserName // 用户的 openid
@@ -113,6 +87,41 @@ class Welcome extends CI_Controller {
 
 		$response = $server->serve();
 		$response->send(); // Laravel 里请使用：return $response;
+	}
+
+	public function set_menu()
+	{
+		$menu = self::$app->menu;
+
+		$buttons = [
+		    [
+		        "type" => "click",
+		        "name" => "今日歌曲",
+		        "key"  => "V1001_TODAY_MUSIC"
+		    ],
+		    [
+		        "name"       => "菜单",
+		        "sub_button" => [
+		            [
+		                "type" => "view",
+		                "name" => "搜索",
+		                "url"  => "http://www.soso.com/"
+		            ],
+		            [
+		                "type" => "view",
+		                "name" => "视频",
+		                "url"  => "http://v.qq.com/"
+		            ],
+		            [
+		                "type" => "click",
+		                "name" => "赞一下我们",
+		                "key" => "V1001_GOOD"
+		            ],
+		        ],
+		    ],
+		];
+
+		$menu->add($buttons);
 	}
 
 	public function article()
