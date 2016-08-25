@@ -57,6 +57,18 @@ class Welcome extends CI_Controller {
 		    	case 'event':
 		    		if ($message->Event == 'subscribe')
 		    			$msg = '终于等到你，还好我没放弃。';
+		    		else if ($message->Event == 'click')
+		    		{
+		    			switch ($message->EventKey) {
+		    				case 'V1001_TODAY_MUSIC':
+		    					$msg = '暂未开放';
+		    					break;
+		    				
+		    				case 'V1001_GOOD':
+		    					$msg = '发个表情点赞。';
+		    					break;
+		    			}
+		    		}
 		    		break;
 		    	case 'text':
 		    		$msg = '消息已收到。';
