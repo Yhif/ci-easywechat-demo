@@ -6,8 +6,10 @@ class Welcome extends CI_Controller {
 
 	private static $options = [
 	    'debug'  => true,
-	    'app_id' => 'wx12ffc15640d65980',
-	    'secret' => 'bb863fb05ab69b9622e534697d120d78',
+	    // 'app_id' => 'wx12ffc15640d65980',
+	    'app_id' => 'wx21ad18f2d6a0122a',
+	    // 'secret' => 'bb863fb05ab69b9622e534697d120d78',
+	    'secret' => '35576ab1082657ad000c37f5cab992aa',
 	    'token'  => 'partybool_wechat',
 	    'aes_key' => 'u4ZdS06uF5ELEvvzpFshXxqM9PBzhABtxjlyoOW4HMv', // 可选
 	    'log' => [
