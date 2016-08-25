@@ -55,9 +55,10 @@ class Welcome extends CI_Controller {
 		    // $message->MsgType // 消息类型：event, text....
 		    switch ($message->MsgType) {
 		    	case 'event':
-		    		if ($message->Event == 'subscribe')
+		    		$event = strtolower($message->Event);
+		    		if ($event == 'subscribe')
 		    			$msg = '终于等到你，还好我没放弃。';
-		    		else if ($message->Event == 'click')
+		    		else if ($event == 'click')
 		    		{
 		    			switch ($message->EventKey) {
 		    				case 'V1001_TODAY_MUSIC':
